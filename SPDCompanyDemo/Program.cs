@@ -13,7 +13,7 @@ namespace SPDCompanyDemo
     {
         static void Main(string[] args)
         {
-            string value = OperateIniFile.ReadIniData("Server", "Release", "", @"config\DBServer.ini");
+            //string value = OperateIniFile.ReadIniData("Server", "Release", "", @"config\DBServer.ini");
 
             //Config config = new Config(@"config\DBServer.ini");
 
@@ -23,7 +23,10 @@ namespace SPDCompanyDemo
             IniConfigHelper.Section user = config["User"];
             server["Test"] = "192.168.100.56";
             db["Devlop"] = "sqlite3";
-            Console.WriteLine(server["Test"]);
+
+            IniConfigHelper.Section section = new IniConfigHelper.Section();
+            section.KeyValuePairs.Add("test", "127.0.0.1");
+            config["Server"] = section;
 
             Console.WriteLine("---------------------------------------");
             foreach (var item in server.KeyValuePairs)
@@ -43,11 +46,7 @@ namespace SPDCompanyDemo
                 Console.WriteLine(item.Key + ":" + item.Value);
             }
 
-            Console.WriteLine(value);
             Console.ReadKey();
-
-
-
 
         }
     }
@@ -196,7 +195,7 @@ namespace SPDCompanyDemo
                         if (line.StartsWith(";"))//;为ini文件里面的注释语句
                             continue;
                         int index = line.IndexOf("[") + 1;
-                        string sectionName = line.Substring(index, line.IndexOf("]")-index);
+                        string sectionName = line.Substring(index, line.IndexOf("]") - index);
                         Section section = new Section();
                         while (!string.IsNullOrEmpty(line = sw.ReadLine()) && !line.StartsWith("["))
                         {
