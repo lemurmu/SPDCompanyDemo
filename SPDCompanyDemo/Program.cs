@@ -17,16 +17,16 @@ namespace SPDCompanyDemo
 
             //Config config = new Config(@"config\DBServer.ini");
 
-            double a = -6000 * Math.Sin(10 * Math.PI / 180);
-
-            IniConfigHelper helper = new IniConfigHelper(@"config\DBServer.ini");
-            IniConfigHelper.Section section = helper["Server"];
-            IniConfigHelper.Section db = helper["DB"];
-            IniConfigHelper.Section user = helper["User"];
-            // section["Test"] = "192.168.100.56";
+            IniConfigHelper config = new IniConfigHelper(@"config\DBServer.ini");
+            IniConfigHelper.Section server = config["Server"];
+            IniConfigHelper.Section db = config["DB"];
+            IniConfigHelper.Section user = config["User"];
+            server["Test"] = "192.168.100.56";
             db["Devlop"] = "sqlite3";
+            Console.WriteLine(server["Test"]);
 
-            foreach (var item in section.KeyValuePairs)
+            Console.WriteLine("---------------------------------------");
+            foreach (var item in server.KeyValuePairs)
             {
                 Console.WriteLine(item.Key + ":" + item.Value);
             }
@@ -43,7 +43,6 @@ namespace SPDCompanyDemo
                 Console.WriteLine(item.Key + ":" + item.Value);
             }
 
-            Console.WriteLine(a);
             Console.WriteLine(value);
             Console.ReadKey();
 
@@ -194,10 +193,10 @@ namespace SPDCompanyDemo
                 {
                     if (!string.IsNullOrEmpty(line) && line.StartsWith("["))
                     {
-                        if (line.StartsWith(";"))
+                        if (line.StartsWith(";"))//;为ini文件里面的注释语句
                             continue;
                         int index = line.IndexOf("[") + 1;
-                        string sectionName = line.Substring(index, line.Length - index - 1);
+                        string sectionName = line.Substring(index, line.IndexOf("]")-index);
                         Section section = new Section();
                         while (!string.IsNullOrEmpty(line = sw.ReadLine()) && !line.StartsWith("["))
                         {
@@ -209,6 +208,10 @@ namespace SPDCompanyDemo
                             section.KeyValuePairs.Add(keyValues[0], keyValues[1]);
                         }
                         Setctions.Add(sectionName, section);
+                    }
+                    else
+                    {
+                        line = sw.ReadLine();
                     }
                 }
                 sw.Close();
@@ -266,7 +269,7 @@ namespace SPDCompanyDemo
                 {
                     if (!KeyValuePairs.ContainsKey(key))
                     {
-                        throw new Exception("not exsit key "+key);
+                        throw new Exception("not exsit key " + key);
                     }
                     KeyValuePairs[key] = value;
                 }
