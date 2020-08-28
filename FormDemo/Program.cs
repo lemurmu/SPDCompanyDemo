@@ -31,15 +31,23 @@ namespace FormDemo
             }
             try
             {
-                Application.Run(new Form1());
+                LoginFrm loginFrm = new LoginFrm();
+                loginFrm.StartPosition = FormStartPosition.CenterScreen;
+                loginFrm.ShowDialog();
+
+                if (loginFrm.DialogResult == DialogResult.OK)
+                {
+                    Application.Run(new FrmMain());
+                }
+
             }
             catch (Exception ex)
             {
-                
+
             }
             finally
             {
-               
+
             }
         }
     }
