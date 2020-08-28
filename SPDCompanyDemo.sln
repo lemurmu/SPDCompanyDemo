@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPDCompanyDemo", "SPDCompan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormDemo", "FormDemo\FormDemo.csproj", "{7CF3062F-0E44-4A3A-B7A8-8933ACCB6CEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisDemo", "RedisDemo\RedisDemo.csproj", "{CCC1861C-6A10-4B0E-89E3-37649D174580}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7CF3062F-0E44-4A3A-B7A8-8933ACCB6CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CF3062F-0E44-4A3A-B7A8-8933ACCB6CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CF3062F-0E44-4A3A-B7A8-8933ACCB6CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCC1861C-6A10-4B0E-89E3-37649D174580}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC1861C-6A10-4B0E-89E3-37649D174580}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC1861C-6A10-4B0E-89E3-37649D174580}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC1861C-6A10-4B0E-89E3-37649D174580}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

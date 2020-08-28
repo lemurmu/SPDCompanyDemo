@@ -1,17 +1,12 @@
 ﻿using DevExpress.XtraEditors;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Configuration;
 using System.Windows.Forms;
 using WLIDAR.BackEnd.UI;
 
 namespace FormDemo
 {
-    public partial class LoginFrm : DevExpress.XtraEditors.XtraForm
+    public partial class LoginFrm : XtraForm
     {
         public LoginFrm()
         {
@@ -24,7 +19,17 @@ namespace FormDemo
             byte[] bodyBytes = new byte[2] { 0x54, 0x93 };
             byte[] buffer = CommonToolkit.CombineSendBuffer(headerBytes, bodyBytes);
 
+            //获取当前程序的版本
             Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+
+            //-----------先执行这个生成salt和hash
+            //byte[] salt = UserWrap.GenerateSalt();
+
+            //Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //configuration.AppSettings.Settings["salt"].Value= Convert.ToBase64String(salt);
+            //configuration.AppSettings.Settings["hash"].Value = Convert.ToBase64String(UserWrap.ComputeHash("12345678", salt));
+            //configuration.Save();
+            //ConfigurationManager.RefreshSection("appSettings");
 
         }
 
@@ -32,7 +37,12 @@ namespace FormDemo
         {
             string userName = user_txt.Text;
             string password = password_txt.Text;
-            if (userName == "admin"&& password=="12345678")
+            Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            byte[] passwordSalt = Convert.FromBase64String(configuration.AppSettings.Settings["salt"].Value);
+            byte[] passwordHash = Convert.FromBase64String(configuration.AppSettings.Settings["hash"].Value);
+
+            bool flag = UserWrap.VerifyPassword(password, passwordSalt, passwordHash);
+            if (userName == "admin" && flag)
             {
                 this.DialogResult = DialogResult.OK;
             }

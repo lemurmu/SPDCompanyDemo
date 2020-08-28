@@ -68,7 +68,7 @@
             // 
             // defaultLookAndFeel1
             // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Colorful";
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "The Bezier";
             // 
             // LoginFrm
             // 

@@ -16,6 +16,7 @@ namespace FormDemo
         public FrmMain()
         {
             InitializeComponent();
+            labelControl1.Text = "登录成功..................";
         }
     }
 }

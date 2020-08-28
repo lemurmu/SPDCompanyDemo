@@ -37,7 +37,7 @@ namespace FormDemo
 
                 if (loginFrm.DialogResult == DialogResult.OK)
                 {
-                    Application.Run(new FrmMain());
+                    Application.Run(new FrmMain { WindowState=FormWindowState.Maximized});
                 }
 
             }
