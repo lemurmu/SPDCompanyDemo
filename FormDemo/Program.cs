@@ -31,6 +31,7 @@ namespace FormDemo
             }
             try
             {
+                //System.Diagnostics.Process.Start("explorer.exe", AppDomain.CurrentDomain.BaseDirectory);
                 LoginFrm loginFrm = new LoginFrm();
                 loginFrm.StartPosition = FormStartPosition.CenterScreen;
                 loginFrm.ShowDialog();
