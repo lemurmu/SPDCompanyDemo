@@ -96,6 +96,28 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Redis3\Client.bat" />
+    <None Include="Redis3\dump.rdb" />
+    <None Include="Redis3\Redis on Windows Release Notes.docx" />
+    <None Include="Redis3\Redis on Windows.docx" />
+    <None Include="Redis3\redis.conf" />
+    <None Include="Redis3\redis.windows-service.conf" />
+    <None Include="Redis3\redis.windows.conf" />
+    <None Include="Redis3\Server.bat" />
+    <None Include="Redis3\Windows Service Documentation.docx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Redis3\EventLog.dll" />
+    <Content Include="Redis3\redis-benchmark.exe" />
+    <Content Include="Redis3\redis-benchmark.pdb" />
+    <Content Include="Redis3\redis-check-aof.exe" />
+    <Content Include="Redis3\redis-check-aof.pdb" />
+    <Content Include="Redis3\redis-check-dump.exe" />
+    <Content Include="Redis3\redis-check-dump.pdb" />
+    <Content Include="Redis3\redis-cli.exe" />
+    <Content Include="Redis3\redis-cli.pdb" />
+    <Content Include="Redis3\redis-server.exe" />
+    <Content Include="Redis3\redis-server.pdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
